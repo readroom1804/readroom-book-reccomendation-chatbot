@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -77,26 +76,32 @@ const Chat = () => {
     
     // Mood detection
     const moods = {
-      happy: ["happy", "cheerful", "uplifting", "joyful", "funny", "comedy", "light"],
-      sad: ["sad", "emotional", "cry", "tearjerker", "melancholy", "depressing"],
-      romantic: ["romance", "romantic", "love", "dating", "relationship"],
-      adventurous: ["adventure", "action", "exciting", "thrilling", "quest"],
-      mysterious: ["mystery", "suspense", "thriller", "detective", "crime"],
-      fantasy: ["fantasy", "magic", "dragons", "wizards", "supernatural"],
-      scifi: ["sci-fi", "science fiction", "space", "future", "technology"]
+      happy: ["happy", "cheerful", "uplifting", "joyful", "funny", "comedy", "light", "feel good", "positive"],
+      sad: ["sad", "emotional", "cry", "tearjerker", "melancholy", "depressing", "heartbreaking"],
+      romantic: ["romance", "romantic", "love", "dating", "relationship", "passion", "sweet"],
+      adventurous: ["adventure", "action", "exciting", "thrilling", "quest", "journey"],
+      mysterious: ["mystery", "suspense", "thriller", "detective", "crime", "puzzle"],
+      fantasy: ["fantasy", "magic", "dragons", "wizards", "supernatural", "mythical"],
+      scifi: ["sci-fi", "science fiction", "space", "future", "technology", "dystopian"],
+      dark: ["dark", "gothic", "horror", "scary", "twisted", "psychological"],
+      inspiring: ["inspiring", "motivational", "uplifting", "hope", "courage", "strength"]
     };
 
     // Genre detection
     const genres = {
-      fantasy: ["fantasy", "magic", "dragons", "wizards", "supernatural", "paranormal"],
-      romance: ["romance", "romantic", "love story", "dating"],
-      mystery: ["mystery", "detective", "crime", "thriller", "suspense"],
-      scifi: ["sci-fi", "science fiction", "space", "future", "dystopian"],
-      horror: ["horror", "scary", "ghost", "vampire", "zombie"],
-      historical: ["historical", "history", "period", "war", "vintage"],
-      literary: ["literary", "classic", "literature", "philosophical"],
-      ya: ["young adult", "ya", "teen", "teenager", "coming of age"],
-      contemporary: ["contemporary", "modern", "realistic", "slice of life"]
+      fantasy: ["fantasy", "magic", "dragons", "wizards", "supernatural", "paranormal", "fae", "witch"],
+      romance: ["romance", "romantic", "love story", "dating", "relationship", "contemporary romance"],
+      mystery: ["mystery", "detective", "crime", "thriller", "suspense", "whodunit", "cozy mystery"],
+      scifi: ["sci-fi", "science fiction", "space", "future", "dystopian", "cyberpunk", "alien"],
+      horror: ["horror", "scary", "ghost", "vampire", "zombie", "haunted", "creepy"],
+      historical: ["historical", "history", "period", "war", "vintage", "regency", "medieval"],
+      literary: ["literary", "classic", "literature", "philosophical", "literary fiction"],
+      ya: ["young adult", "ya", "teen", "teenager", "coming of age", "high school"],
+      contemporary: ["contemporary", "modern", "realistic", "slice of life", "women's fiction"],
+      memoir: ["memoir", "biography", "autobiography", "true story", "non-fiction"],
+      selfhelp: ["self-help", "self help", "productivity", "motivation", "personal development"],
+      business: ["business", "entrepreneur", "leadership", "finance", "career"],
+      cooking: ["cooking", "recipe", "food", "chef", "culinary"]
     };
 
     let detectedMood = null;
@@ -124,38 +129,203 @@ const Chat = () => {
       happy: [
         { title: "Beach Read", author: "Emily Henry", genre: "Contemporary Romance" },
         { title: "The House in the Cerulean Sea", author: "TJ Klune", genre: "Fantasy Romance" },
-        { title: "Anxious People", author: "Fredrik Backman", genre: "Literary Fiction" }
+        { title: "Anxious People", author: "Fredrik Backman", genre: "Literary Fiction" },
+        { title: "Eleanor Oliphant Is Completely Fine", author: "Gail Honeyman", genre: "Contemporary Fiction" },
+        { title: "The Midnight Library", author: "Matt Haig", genre: "Literary Fiction" },
+        { title: "Good Omens", author: "Terry Pratchett & Neil Gaiman", genre: "Fantasy Comedy" },
+        { title: "The Rosie Project", author: "Graeme Simsion", genre: "Contemporary Romance" },
+        { title: "A Man Called Ove", author: "Fredrik Backman", genre: "Literary Fiction" },
+        { title: "The Guernsey Literary and Potato Peel Pie Society", author: "Mary Ann Shaffer", genre: "Historical Fiction" },
+        { title: "Me Talk Pretty One Day", author: "David Sedaris", genre: "Humor/Memoir" }
       ],
       romantic: [
         { title: "The Seven Husbands of Evelyn Hugo", author: "Taylor Jenkins Reid", genre: "Historical Fiction" },
         { title: "It Ends with Us", author: "Colleen Hoover", genre: "Contemporary Romance" },
-        { title: "The Song of Achilles", author: "Madeline Miller", genre: "Historical Fiction" }
+        { title: "The Song of Achilles", author: "Madeline Miller", genre: "Historical Fiction" },
+        { title: "Pride and Prejudice", author: "Jane Austen", genre: "Classic Romance" },
+        { title: "Outlander", author: "Diana Gabaldon", genre: "Historical Romance" },
+        { title: "The Hating Game", author: "Sally Thorne", genre: "Contemporary Romance" },
+        { title: "Red, White & Royal Blue", author: "Casey McQuiston", genre: "Contemporary Romance" },
+        { title: "The Kiss Quotient", author: "Helen Hoang", genre: "Contemporary Romance" },
+        { title: "People We Meet on Vacation", author: "Emily Henry", genre: "Contemporary Romance" },
+        { title: "The Time Traveler's Wife", author: "Audrey Niffenegger", genre: "Science Fiction Romance" },
+        { title: "Me Before You", author: "Jojo Moyes", genre: "Contemporary Romance" },
+        { title: "The Notebook", author: "Nicholas Sparks", genre: "Contemporary Romance" }
       ],
       fantasy: [
         { title: "Fourth Wing", author: "Rebecca Yarros", genre: "Fantasy Romance" },
         { title: "The Priory of the Orange Tree", author: "Samantha Shannon", genre: "Epic Fantasy" },
-        { title: "The Invisible Life of Addie LaRue", author: "V.E. Schwab", genre: "Fantasy" }
+        { title: "The Invisible Life of Addie LaRue", author: "V.E. Schwab", genre: "Fantasy" },
+        { title: "A Court of Thorns and Roses", author: "Sarah J. Maas", genre: "Fantasy Romance" },
+        { title: "The Name of the Wind", author: "Patrick Rothfuss", genre: "Epic Fantasy" },
+        { title: "The Hobbit", author: "J.R.R. Tolkien", genre: "High Fantasy" },
+        { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", genre: "Fantasy" },
+        { title: "The Way of Kings", author: "Brandon Sanderson", genre: "Epic Fantasy" },
+        { title: "The Night Circus", author: "Erin Morgenstern", genre: "Magical Realism" },
+        { title: "Six of Crows", author: "Leigh Bardugo", genre: "Fantasy" },
+        { title: "The Poppy War", author: "R.F. Kuang", genre: "Dark Fantasy" },
+        { title: "The Bear and the Nightingale", author: "Katherine Arden", genre: "Fantasy" }
       ],
       mystery: [
         { title: "The Thursday Murder Club", author: "Richard Osman", genre: "Cozy Mystery" },
         { title: "The Silent Patient", author: "Alex Michaelides", genre: "Psychological Thriller" },
-        { title: "Gone Girl", author: "Gillian Flynn", genre: "Psychological Thriller" }
+        { title: "Gone Girl", author: "Gillian Flynn", genre: "Psychological Thriller" },
+        { title: "The Girl with the Dragon Tattoo", author: "Stieg Larsson", genre: "Crime Thriller" },
+        { title: "In the Woods", author: "Tana French", genre: "Mystery" },
+        { title: "The Big Sleep", author: "Raymond Chandler", genre: "Detective Fiction" },
+        { title: "And Then There Were None", author: "Agatha Christie", genre: "Mystery" },
+        { title: "The Murder of Roger Ackroyd", author: "Agatha Christie", genre: "Mystery" },
+        { title: "The Girl on the Train", author: "Paula Hawkins", genre: "Psychological Thriller" },
+        { title: "Sharp Objects", author: "Gillian Flynn", genre: "Psychological Thriller" },
+        { title: "Big Little Lies", author: "Liane Moriarty", genre: "Mystery" },
+        { title: "The Woman in the Window", author: "A.J. Finn", genre: "Psychological Thriller" }
+      ],
+      scifi: [
+        { title: "Dune", author: "Frank Herbert", genre: "Science Fiction" },
+        { title: "The Martian", author: "Andy Weir", genre: "Science Fiction" },
+        { title: "Klara and the Sun", author: "Kazuo Ishiguro", genre: "Literary Science Fiction" },
+        { title: "The Handmaid's Tale", author: "Margaret Atwood", genre: "Dystopian Fiction" },
+        { title: "Station Eleven", author: "Emily St. John Mandel", genre: "Post-Apocalyptic Fiction" },
+        { title: "The Left Hand of Darkness", author: "Ursula K. Le Guin", genre: "Science Fiction" },
+        { title: "Neuromancer", author: "William Gibson", genre: "Cyberpunk" },
+        { title: "Foundation", author: "Isaac Asimov", genre: "Science Fiction" },
+        { title: "Ender's Game", author: "Orson Scott Card", genre: "Science Fiction" },
+        { title: "The Hitchhiker's Guide to the Galaxy", author: "Douglas Adams", genre: "Science Fiction Comedy" },
+        { title: "Ready Player One", author: "Ernest Cline", genre: "Science Fiction" },
+        { title: "The Time Machine", author: "H.G. Wells", genre: "Classic Science Fiction" }
+      ],
+      horror: [
+        { title: "The Haunting of Hill House", author: "Shirley Jackson", genre: "Gothic Horror" },
+        { title: "Pet Sematary", author: "Stephen King", genre: "Horror" },
+        { title: "The Exorcist", author: "William Peter Blatty", genre: "Horror" },
+        { title: "Dracula", author: "Bram Stoker", genre: "Gothic Horror" },
+        { title: "Frankenstein", author: "Mary Shelley", genre: "Gothic Horror" },
+        { title: "The Shining", author: "Stephen King", genre: "Horror" },
+        { title: "Something Wicked This Way Comes", author: "Ray Bradbury", genre: "Dark Fantasy" },
+        { title: "The Turn of the Screw", author: "Henry James", genre: "Ghost Story" },
+        { title: "World War Z", author: "Max Brooks", genre: "Horror" },
+        { title: "The Silence of the Lambs", author: "Thomas Harris", genre: "Psychological Horror" }
+      ],
+      historical: [
+        { title: "The Book Thief", author: "Markus Zusak", genre: "Historical Fiction" },
+        { title: "All Quiet on the Western Front", author: "Erich Maria Remarque", genre: "War Fiction" },
+        { title: "The Pillars of the Earth", author: "Ken Follett", genre: "Historical Fiction" },
+        { title: "Gone with the Wind", author: "Margaret Mitchell", genre: "Historical Fiction" },
+        { title: "The Other Boleyn Girl", author: "Philippa Gregory", genre: "Historical Fiction" },
+        { title: "Wolf Hall", author: "Hilary Mantel", genre: "Historical Fiction" },
+        { title: "The Nightingale", author: "Kristin Hannah", genre: "Historical Fiction" },
+        { title: "Memoirs of a Geisha", author: "Arthur Golden", genre: "Historical Fiction" },
+        { title: "Cold Mountain", author: "Charles Frazier", genre: "Historical Fiction" },
+        { title: "The Help", author: "Kathryn Stockett", genre: "Historical Fiction" }
+      ],
+      literary: [
+        { title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Literary Fiction" },
+        { title: "1984", author: "George Orwell", genre: "Dystopian Fiction" },
+        { title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Classic Literature" },
+        { title: "Beloved", author: "Toni Morrison", genre: "Literary Fiction" },
+        { title: "One Hundred Years of Solitude", author: "Gabriel García Márquez", genre: "Magical Realism" },
+        { title: "The Catcher in the Rye", author: "J.D. Salinger", genre: "Literary Fiction" },
+        { title: "Atonement", author: "Ian McEwan", genre: "Literary Fiction" },
+        { title: "The Kite Runner", author: "Khaled Hosseini", genre: "Literary Fiction" },
+        { title: "Life of Pi", author: "Yann Martel", genre: "Literary Fiction" },
+        { title: "The Color Purple", author: "Alice Walker", genre: "Literary Fiction" }
+      ],
+      ya: [
+        { title: "The Hunger Games", author: "Suzanne Collins", genre: "Young Adult Dystopian" },
+        { title: "Divergent", author: "Veronica Roth", genre: "Young Adult Dystopian" },
+        { title: "The Fault in Our Stars", author: "John Green", genre: "Young Adult Contemporary" },
+        { title: "Percy Jackson: The Lightning Thief", author: "Rick Riordan", genre: "Young Adult Fantasy" },
+        { title: "Twilight", author: "Stephenie Meyer", genre: "Young Adult Paranormal Romance" },
+        { title: "The Maze Runner", author: "James Dashner", genre: "Young Adult Dystopian" },
+        { title: "Miss Peregrine's Home for Peculiar Children", author: "Ransom Riggs", genre: "Young Adult Fantasy" },
+        { title: "The Perks of Being a Wallflower", author: "Stephen Chbosky", genre: "Young Adult Contemporary" },
+        { title: "Looking for Alaska", author: "John Green", genre: "Young Adult Contemporary" },
+        { title: "Thirteen Reasons Why", author: "Jay Asher", genre: "Young Adult Contemporary" }
+      ],
+      contemporary: [
+        { title: "Where the Crawdads Sing", author: "Delia Owens", genre: "Contemporary Fiction" },
+        { title: "Little Fires Everywhere", author: "Celeste Ng", genre: "Contemporary Fiction" },
+        { title: "The Goldfinch", author: "Donna Tartt", genre: "Contemporary Fiction" },
+        { title: "Normal People", author: "Sally Rooney", genre: "Contemporary Fiction" },
+        { title: "Educated", author: "Tara Westover", genre: "Memoir" },
+        { title: "Becoming", author: "Michelle Obama", genre: "Memoir" },
+        { title: "The Seven Moons of Maali Almeida", author: "Shehan Karunatilaka", genre: "Contemporary Fiction" },
+        { title: "Tomorrow, and Tomorrow, and Tomorrow", author: "Gabrielle Zevin", genre: "Contemporary Fiction" },
+        { title: "The Atlas Six", author: "Olivie Blake", genre: "Dark Academia Fantasy" },
+        { title: "Project Hail Mary", author: "Andy Weir", genre: "Science Fiction" }
+      ],
+      sad: [
+        { title: "A Little Life", author: "Hanya Yanagihara", genre: "Literary Fiction" },
+        { title: "The Fault in Our Stars", author: "John Green", genre: "Young Adult Contemporary" },
+        { title: "Me Before You", author: "Jojo Moyes", genre: "Contemporary Romance" },
+        { title: "The Book Thief", author: "Markus Zusak", genre: "Historical Fiction" },
+        { title: "Never Let Me Go", author: "Kazuo Ishiguro", genre: "Literary Fiction" },
+        { title: "Of Mice and Men", author: "John Steinbeck", genre: "Classic Literature" },
+        { title: "The Lovely Bones", author: "Alice Sebold", genre: "Literary Fiction" },
+        { title: "My Sister's Keeper", author: "Jodi Picoult", genre: "Contemporary Fiction" },
+        { title: "The Time Traveler's Wife", author: "Audrey Niffenegger", genre: "Science Fiction Romance" },
+        { title: "One Day", author: "David Nicholls", genre: "Contemporary Fiction" }
+      ],
+      inspiring: [
+        { title: "Atomic Habits", author: "James Clear", genre: "Self-Help" },
+        { title: "The Alchemist", author: "Paulo Coelho", genre: "Philosophical Fiction" },
+        { title: "Educated", author: "Tara Westover", genre: "Memoir" },
+        { title: "Wild", author: "Cheryl Strayed", genre: "Memoir" },
+        { title: "The Power of Now", author: "Eckhart Tolle", genre: "Spirituality" },
+        { title: "Becoming", author: "Michelle Obama", genre: "Memoir" },
+        { title: "The 7 Habits of Highly Effective People", author: "Stephen Covey", genre: "Self-Help" },
+        { title: "Man's Search for Meaning", author: "Viktor E. Frankl", genre: "Philosophy" },
+        { title: "Daring Greatly", author: "Brené Brown", genre: "Self-Help" },
+        { title: "The Four Agreements", author: "Don Miguel Ruiz", genre: "Self-Help" }
+      ],
+      memoir: [
+        { title: "Educated", author: "Tara Westover", genre: "Memoir" },
+        { title: "Becoming", author: "Michelle Obama", genre: "Memoir" },
+        { title: "Born a Crime", author: "Trevor Noah", genre: "Memoir" },
+        { title: "Kitchen Confidential", author: "Anthony Bourdain", genre: "Memoir" },
+        { title: "Wild", author: "Cheryl Strayed", genre: "Memoir" },
+        { title: "Yes Please", author: "Amy Poehler", genre: "Memoir" },
+        { title: "Bossypants", author: "Tina Fey", genre: "Memoir" },
+        { title: "I Know Why the Caged Bird Sings", author: "Maya Angelou", genre: "Memoir" },
+        { title: "The Glass Castle", author: "Jeannette Walls", genre: "Memoir" },
+        { title: "Open", author: "Andre Agassi", genre: "Sports Memoir" }
       ],
       default: [
-        { title: "Atomic Habits", author: "James Clear", genre: "Self-Help" },
-        { title: "Where the Crawdads Sing", author: "Delia Owens", genre: "Literary Fiction" },
+        { title: "The Seven Husbands of Evelyn Hugo", author: "Taylor Jenkins Reid", genre: "Historical Fiction" },
+        { title: "Where the Crawdads Sing", author: "Delia Owens", genre: "Contemporary Fiction" },
         { title: "The Midnight Library", author: "Matt Haig", genre: "Literary Fiction" },
-        { title: "Educated", author: "Tara Westover", genre: "Memoir" }
+        { title: "Educated", author: "Tara Westover", genre: "Memoir" },
+        { title: "The Silent Patient", author: "Alex Michaelides", genre: "Psychological Thriller" },
+        { title: "Atomic Habits", author: "James Clear", genre: "Self-Help" },
+        { title: "The House in the Cerulean Sea", author: "TJ Klune", genre: "Fantasy Romance" },
+        { title: "Project Hail Mary", author: "Andy Weir", genre: "Science Fiction" },
+        { title: "It Ends with Us", author: "Colleen Hoover", genre: "Contemporary Romance" },
+        { title: "The Thursday Murder Club", author: "Richard Osman", genre: "Cozy Mystery" },
+        { title: "Dune", author: "Frank Herbert", genre: "Science Fiction" },
+        { title: "Normal People", author: "Sally Rooney", genre: "Contemporary Fiction" }
       ]
     };
 
+    let selectedBooks = [];
+    
     if (mood && bookDatabase[mood as keyof typeof bookDatabase]) {
-      return bookDatabase[mood as keyof typeof bookDatabase];
+      selectedBooks = [...bookDatabase[mood as keyof typeof bookDatabase]];
     }
+    
     if (genre && bookDatabase[genre as keyof typeof bookDatabase]) {
-      return bookDatabase[genre as keyof typeof bookDatabase];
+      const genreBooks = bookDatabase[genre as keyof typeof bookDatabase];
+      selectedBooks = selectedBooks.length > 0 ? 
+        [...selectedBooks, ...genreBooks].slice(0, 15) : 
+        [...genreBooks];
     }
-    return bookDatabase.default;
+    
+    if (selectedBooks.length === 0) {
+      selectedBooks = bookDatabase.default;
+    }
+
+    // Shuffle and return a random selection
+    const shuffled = selectedBooks.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, Math.min(8, shuffled.length));
   };
 
   const generateBotResponse = async (userMessage: string) => {
@@ -178,7 +348,7 @@ const Chat = () => {
 
     return {
       text: responseText,
-      books: books.slice(0, 3) // Return up to 3 books
+      books: books
     };
   };
 
