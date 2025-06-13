@@ -38,7 +38,13 @@ const Chat = () => {
     // Load chat history
     const chatHistory = localStorage.getItem(`readroom_chat_${userData.id}`);
     if (chatHistory) {
-      setMessages(JSON.parse(chatHistory));
+      const parsedHistory = JSON.parse(chatHistory);
+      // Convert timestamp strings back to Date objects
+      const historyWithDates = parsedHistory.map((msg: any) => ({
+        ...msg,
+        timestamp: new Date(msg.timestamp)
+      }));
+      setMessages(historyWithDates);
     } else {
       // Welcome message
       const welcomeMessage: Message = {
