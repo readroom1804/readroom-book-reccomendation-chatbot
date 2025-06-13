@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,12 +62,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// ReadRoom custom colors
+				'peach': {
+					50: 'hsl(25 100% 97%)',
+					100: 'hsl(25 100% 94%)',
+					200: 'hsl(25 100% 87%)',
+					300: 'hsl(25 100% 77%)',
+					400: 'hsl(25 100% 66%)',
+					500: 'hsl(25 100% 55%)',
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				'sans': ['Poppins', 'sans-serif'],
+				'serif': ['Playfair Display', 'serif']
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +98,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'bounce': {
+					'0%, 100%': {
+						transform: 'translateY(-25%)',
+						'animation-timing-function': 'cubic-bezier(0.8,0,1,1)'
+					},
+					'50%': {
+						transform: 'translateY(0)',
+						'animation-timing-function': 'cubic-bezier(0,0,0.2,1)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'bounce': 'bounce 1s infinite'
 			}
 		}
 	},
